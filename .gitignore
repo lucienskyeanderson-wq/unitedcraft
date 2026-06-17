@@ -1,0 +1,24 @@
+# Gradle
+.gradle/
+build/
+out/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.class
+
+# Fabric / Minecraft dev cache
+.fabric/
+run/
+remappedSrc/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# SQLite db files (don't commit server data)
+*.db
+*.db-wal
+*.db-shm
