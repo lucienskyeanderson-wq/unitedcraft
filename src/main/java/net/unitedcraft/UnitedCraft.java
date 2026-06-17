@@ -24,9 +24,10 @@ public class UnitedCraft implements ModInitializer {
     public static TreatyManager treatyManager;
     public static ChatManager chatManager;
     public static NationManager nationManager;
+    public static EconomyManager economyManager;
+    public static JobManager jobManager;
 
     // Tick counters for scheduled tasks
-    // 1 tick = 50ms, 20 ticks = 1 second, 20*60*60*24*7 = 1 week of ticks
     private static int maintenanceTick = 0;
     private static final int MAINTENANCE_INTERVAL_TICKS = 20 * 60 * 60 * 24 * 7; // 1 week
 
@@ -46,6 +47,8 @@ public class UnitedCraft implements ModInitializer {
         allianceManager = new AllianceManager();
         treatyManager   = new TreatyManager();
         chatManager     = new ChatManager();
+        economyManager  = new EconomyManager();
+        jobManager      = new JobManager();
 
         // Register commands
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
@@ -55,11 +58,13 @@ public class UnitedCraft implements ModInitializer {
             GovCommands.register(dispatcher);
             AllianceCommands.register(dispatcher);
             ChatCommands.register(dispatcher);
+            EconomyCommands.register(dispatcher, registryAccess, environment);
         });
 
         // Register event listeners
         PlayerEventListener.register();
         BlockEventListener.register();
+        JobEventListener.register();
 
         // Weekly land maintenance tick
         ServerTickEvents.END_SERVER_TICK.register(server -> {
