@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "unitedcraft",
+  "version": "${version}",
+  "name": "UnitedCraft",
+  "description": "Nations, governance, land claiming, warfare, alliances, and elections for Fabric servers.",
+  "authors": ["UnitedCraft"],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/unitedcraft/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["net.unitedcraft.UnitedCraft"]
+  },
+  "mixins": ["unitedcraft.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
